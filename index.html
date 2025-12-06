@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Now</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Now</h1>
+        <p class="subtitle">Consulte o clima de qualquer cidade</p>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Digite uma cidade...">
+            <button id="searchBtn">Buscar</button>
+        </div>
+
+        <div id="weatherResult" class="result hidden">
+            <h2 id="cityName"></h2>
+            <p class="temp"><span id="temperature"></span>°C</p>
+            <p class="description" id="description"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
