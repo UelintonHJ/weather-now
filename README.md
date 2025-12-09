@@ -1,4 +1,4 @@
-# 🌦️ [Weather Now](https://uelintonhj.github.io/weather-now/)
+# 🌦️ [Weather Now](https://weather-now-jade-seven.vercel.app/)
 
 Weather Now é um aplicativo simples e moderno para consultar o clima em qualquer cidade do mundo utilizando a API pública da OpenWeatherMap.
 O projeto foi desenvolvido com foco em **responsividade**, **design clean**, **acessibilidade** e **performance**, além de incluir versão **PWA**, permitindo a instalação como app no celular ou desktop.
