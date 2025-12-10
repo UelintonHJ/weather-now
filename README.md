@@ -1,20 +1,19 @@
 # 🌦️ [Weather Now](https://weather-now-jade-seven.vercel.app/)
 
-Weather Now é um aplicativo simples e moderno para consultar o clima em qualquer cidade do mundo utilizando a API pública da OpenWeatherMap.
-O projeto foi desenvolvido com foco em **responsividade**, **design clean**, **acessibilidade** e **performance**, além de incluir versão **PWA**, permitindo a instalação como app no celular ou desktop.
+Aplicação de clima que permite consultar temperatura, descrição e ícones dinâmicos de qualquer cidade do mundo, utilizando a API pública da OpenWeatherMap. O projeto tem foco em **responsividade**, **design clean**, **acessibilidade** e conta com versão **PWA**, podendo ser instalado como aplicativo.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- 🔍 Busca por cidade
-- 🌡️ Exibição de temperatura atual
-- 🌥️ Descrição detalhada do clima
-- 🎨 Tema claro/escuro
-- ✨ ícones animados de acordo com o clima
-- 🧊 Design minimalista com efeito *glassmorphism*
-- 📱 Totalmente responsivo (mobile first)
-- 📦 PWA: instalável no Android, iOS e Desktop
+- Busca por cidade
+- Temperatura em tempo real
+- Descrição detalhada do clima
+- Tema claro/escuro
+- ícones animados de acordo com o clima
+- Design *glassmorphism*
+- Totalmente responsivo 
+- PWA instalável (Android, iOS e Desktop)
 
 ---
 
@@ -26,47 +25,46 @@ O projeto foi desenvolvido com foco em **responsividade**, **design clean**, **a
 - OpenWeather API
 - Service Worker (para PWA)
 - Manifest.json
+- Git & GitHub
 
 ---
 
 ## 📸 Preview
 
-![Preview do Projeto](assets/preview-projeto.png)
+![Preview do Projeto](assets/preview-weather-now.png)
 
 ---
 
-## ⚙️ Como Rodar o Projeto Localmente
+## 📦 Como executar o projeto
 
 ```
 git clone https://github.com/UelintonHJ/weather-now
 cd weather-now
+abrir o index.html no navegador
 ```
-
-Abra o index.html no navegador ou use uma extensão de Live Server.
+Ou acesse a versão hospedada:
+https://weather-now-jade-seven.vercel.app/
 
 ---
 
-## 🔑 Configuração da API
+## 🔑 Configuração da API (opcional)
 
-Crie uma conta gratuita:
-https://openweathermap.org/api
-
-Depois, coloque sua chave em:
-
+Para rodar com sua própria chave:
 ```
 const apiKey = "SUA_API";
 ```
+Cadastrar gratuitamente em: https://openweathermap.org/api
 
 ---
 
-## 📱 Instalação como PWA
+## 📚 Aprendizados
 
-1. Acesse o site pelo navegador no celular/desktop
-2. Clique no botão "Istalar App" ou "Adicionar à tela inicial"
-3. Pronto - o Weather Now vira um app!
+Neste projeto aprendi a consumir APIs externas usando **fetch()**, trabalhar com **resposividade mobile-first**, implementar **tema claro/escuro**, criar **PWA** com Service Worker e melhorar minha organização de layout usando efeitos visuais modernos como *glassmorphism*.
 
 ---
 
 ## 🧑‍💻 Autor
 
-Criado por **Uelinton Janke**
+**Uelinton Janke**
+
+LinkedIn: https://www.linkedin.com/in/uelinton-janke/
