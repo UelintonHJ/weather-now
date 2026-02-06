@@ -1,5 +1,7 @@
 const apiKey = "28be0d95281d908f22306074f72a6744";
 
+const LAST_CITY_KEY = "lastCity";
+
 const DOM = {
     cityInput: document.getElementById("cityInput"),
     searchBtn: document.getElementById("searchBtn"),
@@ -44,6 +46,8 @@ async function getWeather() {
     try {
         const data = await fetchWeather(city);
         renderWeather(data);
+
+        localStorage.setItem(LAST_CITY_KEY, city);
     } catch (error) {
         showError(error.message);
     } finally {
@@ -128,4 +132,11 @@ setTheme(savedTheme);
 
 if (serviceWorker in navigator) {
     navigator.serviceWorker.register("sw.js");
+}
+
+const lastCity = localStorage.getItem(LAST_CITY_KEY);
+
+if (lastCity) {
+    DOM.cityInput.value = lastCity;
+    getWeather();
 }
