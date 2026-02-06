@@ -94,6 +94,11 @@ body {
     background: #38637d;
 }
 
+.search-box button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 .error {
     margin-top: 10px;
     color: #BA181B;

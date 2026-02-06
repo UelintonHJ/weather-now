@@ -33,12 +33,21 @@ async function getWeather() {
         return;
     }
 
+    setLoading(true);
+
     try {
         const data = await fetchWeather(city);
         renderWeather(data);
     } catch (error) {
         showError(error.message);
+    } finally {
+        setLoading(false)
     }
+}
+
+function setLoading(isLoading) {
+    DOM.searchBtn.disabled = isLoading;
+    DOM.searchBtn.innerText = isLoading ? "Buscando..." : "Buscar";
 }
 
 async function fetchWeather(city) {
