@@ -130,8 +130,8 @@ DOM.themeBtn.addEventListener("click", () => {
 const savedTheme = localStorage.getItem("theme") || "light";
 setTheme(savedTheme);
 
-if (serviceWorker in navigator) {
-    navigator.serviceWorker.register("sw.js");
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("js/sw.js");
 }
 
 const lastCity = localStorage.getItem(LAST_CITY_KEY);
