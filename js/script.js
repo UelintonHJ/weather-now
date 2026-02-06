@@ -23,6 +23,12 @@ const WEATHER_ICONS = {
 
 DOM.searchBtn.addEventListener("click", getWeather);
 
+DOM.cityInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        getWeather();
+    }
+});
+
 async function getWeather() {
     const city = DOM.cityInput.value.trim();
 
