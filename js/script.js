@@ -89,24 +89,27 @@ function clearError() {
     errorEl.classList.add("hidden");
 }
 
+function setTheme(theme) {
+    document.body.classList.toggle("dark", theme === "dark");
+
+    DOM.themeBtn.innerHTML = 
+        theme === "dark"
+            ? "<img src='/assets/icons/toggleIcon/sun.png' alt='theme-light'>"
+            : "<img src='/assets/icons/toggleIcon/night.png' alt='theme-dark'>";
+
+    localStorage.setItem("theme", theme);
+}
+
 DOM.themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+    const nextTheme = document.body.classList.contains("dark")
+        ? "light"
+        : "dark";
 
-    DOM.themeBtn.innerHTML = document.body.classList.contains("dark")
-        ? "<img src='/assets/icons/toggleIcon/sun.png' alt='theme-light'>"
-        : "<img src='/assets/icons/toggleIcon/night.png' alt='theme-dark'>";
-
-    localStorage.setItem(
-        "theme",
-        document.body.classList.contains("dark") ? "dark" : "light"
-    );
+    setTheme(nextTheme);
 });
 
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    DOM.themeBtn.innerHTML =
-        "<img src='/assets/icons/toggleIcon/sun.png' alt='theme-light'>";
-}
+const savedTheme = localStorage.getItem("theme") || "light";
+setTheme(savedTheme);
 
 if (serviceWorker in navigator) {
     navigator.serviceWorker.register("sw.js");
