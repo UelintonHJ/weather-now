@@ -94,6 +94,12 @@ body {
     background: #38637d;
 }
 
+.error {
+    margin-top: 10px;
+    color: #BA181B;
+    font-size: 14px;
+}
+
 .result.hidden {
     display: none;
 }

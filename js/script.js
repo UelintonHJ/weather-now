@@ -16,8 +16,10 @@ DOM.searchBtn.addEventListener("click", getWeather);
 async function getWeather() {
     const city = DOM.cityInput.value.trim();
 
+    clearError();
+
     if (!city) {
-        alert("Digite uma cidade!");
+        showError("Digite uma cidade!");
         return;
     }
 
@@ -25,7 +27,7 @@ async function getWeather() {
         const data = await fetchWeather(city);
         renderWeather(data);
     } catch (error) {
-        alert(error.message);
+        showError(error.message);
     }
 }
 
@@ -62,6 +64,18 @@ function loadWeatherIcon(condition) {
     <lottie-player src="${iconUrl}" speed="1" autoplay loop>
     </lottie-player>
     `;
+}
+
+function showError(message) {
+    const errorEl = document.getElementById("errorMessage");
+    errorEl.textContent = message;
+    errorEl.classList.remove("hidden");
+}
+
+function clearError() {
+    const errorEl = document.getElementById("errorMessage");
+    errorEl.textContent = "";
+    errorEl.classList.add("hidden");
 }
 
 DOM.themeBtn.addEventListener("click", () => {
