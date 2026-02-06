@@ -11,6 +11,16 @@ const DOM = {
     themeBtn: document.getElementById("toggleTheme"),
 };
 
+const WEATHER_ICONS = {
+    clear: "clear.json",
+    cloud: "clouds.json",
+    rain: "rain.json",
+    storm: "storm.json",
+    thunder: "storm.json",
+    snow: "snow.json",
+    mist: "clouds.json",
+};
+
 DOM.searchBtn.addEventListener("click", getWeather);
 
 async function getWeather() {
@@ -37,7 +47,7 @@ async function fetchWeather(city) {
     );
 
     if (!response.ok) {
-        throw new Error ("Cidade não encontrada");
+        throw new Error("Cidade não encontrada");
     }
 
     return response.json();
@@ -53,16 +63,17 @@ function renderWeather(data) {
 }
 
 function loadWeatherIcon(condition) {
-    let iconUrl = "";
+    const key = Object.keys(WEATHER_ICONS)
+        .find(k => condition.includes(k));
 
-    if (condition.includes("clear")) iconUrl = "assets/icons/weatherIcon/clear.json";
-    else if (condition.includes("cloud")) iconUrl = "assets/icons/weatherIcon/clouds.json"
-    else if (condition.includes("rain")) iconUrl = "assets/icons/weatherIcon/rain.json"
-    else if (condition.includes("storm") || condition.includes("thunder")) iconUrl = "assets/icons/weatherIcon/storm.json";
+    if (!key) return;
 
     DOM.weatherIcon.innerHTML = `
-    <lottie-player src="${iconUrl}" speed="1" autoplay loop>
-    </lottie-player>
+        <lottie-player
+            src="assets/icons/weatherIcon/${WEATHER_ICONS[key]}" 
+            autoplay 
+            loop>
+        </lottie-player>
     `;
 }
 
@@ -93,8 +104,8 @@ DOM.themeBtn.addEventListener("click", () => {
 
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
-    DOM.themeBtn.innerHTML = 
-    "<img src='/assets/icons/toggleIcon/sun.png' alt='theme-light'>";
+    DOM.themeBtn.innerHTML =
+        "<img src='/assets/icons/toggleIcon/sun.png' alt='theme-light'>";
 }
 
 if (serviceWorker in navigator) {
