@@ -13,33 +13,41 @@ const DOM = {
 
 DOM.searchBtn.addEventListener("click", getWeather);
 
-function getWeather() {
+async function getWeather() {
     const city = DOM.cityInput.value.trim();
 
-    if (city === "") {
+    if (!city) {
         alert("Digite uma cidade!");
         return;
     }
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=pt_br&units=metric`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Cidade não encontrada");
-            }
-            return response.json();
-        })
-        .then(data => {
-            DOM.cityName.innerText = data.name;
-            DOM.temperature.innerText = Math.round(data.main.temp);
-            DOM.description.innerText = data.weather[0].description;
+    try {
+        const data = await fetchWeather(city);
+        renderWeather(data);
+    } catch (error) {
+        alert(error.message);
+    }
+}
 
-            loadWeatherIcon(data.weather[0].main.toLowerCase());
+async function fetchWeather(city) {
+    const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=pt_br&units=metric`
+    );
 
-            DOM.weatherResult.classList.remove("hidden");
-        })
-        .catch(error => {
-            alert(error.message);
-        });
+    if (!response.ok) {
+        throw new Error ("Cidade não encontrada");
+    }
+
+    return response.json();
+}
+
+function renderWeather(data) {
+    DOM.cityName.innerText = data.name;
+    DOM.temperature.innerText = Math.round(data.main.temp);
+    DOM.description.innerText = data.weather[0].description;
+
+    loadWeatherIcon(data.weather[0].main.toLowerCase());
+    DOM.weatherResult.classList.remove("hidden");
 }
 
 function loadWeatherIcon(condition) {
